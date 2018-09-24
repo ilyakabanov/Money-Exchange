@@ -6,7 +6,7 @@ module.exports = function makeExchange(currency) {
 
     let sum = currency;
     let resutl = {};
-    let coins  = {
+    const coins  = {
         'H': 50,
         'Q': 25,
         'D': 10,
@@ -16,12 +16,13 @@ module.exports = function makeExchange(currency) {
 
     for (const key in coins) {
 
-        let countCoins = Math.floor( sum / coins[key] );
+        const item = coins[key];
+        const countCoins = Math.floor( sum / item );
 
         if (!countCoins) continue;
 
         resutl[key] = countCoins;
-        sum = sum % coins[key];
+        sum = sum % item;
     }
 
     return resutl;
